@@ -7,4 +7,13 @@ const dbPool = msql.createPool({
     database: process.env.MYSQLDATABASE
 });
 
+dbPool.getConnection((err, conn) => {
+    if (err) {
+        console.error('❌ Gagal connect ke MySQL:', err.message);
+    } else {
+        console.log('✅ Berhasil connect ke MySQL');
+        conn.release();
+    }
+});
+
 module.exports = dbPool.promise();
