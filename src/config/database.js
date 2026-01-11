@@ -4,7 +4,7 @@ const dbPool = msql.createPool({
     host: process.env.MYSQLHOST,
     user: process.env.MYSQLUSER,
     password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLSATABASE
+    database: process.env.MYSQLDATABASE
 });
 
 module.exports = dbPool.promise();
