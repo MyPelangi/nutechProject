@@ -8,7 +8,14 @@ const app = express();
 app.use(express.json());
 
 app.use('/', Routes);
+// Bagian ini diubah:
+// Export app untuk Vercel
+module.exports = app;
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+// app.listen hanya dijalankan jika kita sedang di mode development (lokal)
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 4000;
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
