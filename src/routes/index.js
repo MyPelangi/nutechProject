@@ -14,6 +14,14 @@ const HistoryController = require('../controller/transactionHistory');
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.json({
+        status: 200,
+        message: 'Nutech Test API is running',
+        data: null
+    });
+});
+
 // AUTH
 router.post('/login', validateLogin, AuthController.login);
 router.post('/registration',validateRegister, AuthController.register);
